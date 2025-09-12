@@ -1,3 +1,4 @@
+# pyright: reportAttributeAccessIssue=none
 import argparse
 import math
 import os
@@ -116,7 +117,7 @@ class WavTool:
         """
         self._error = False
 
-        basedata: list
+        basedata: bytes
         if not os.path.isfile(input_):
             print(f"input file is not found:{input_}")
             self._error = True
@@ -290,10 +291,10 @@ if __name__ == "__main__":
         nargs="*",
         type=float,
         help="envelope patern "
-        + "'p1 p2' or 'p1 p2 p3 v1 v2 v3 v4 ove'"
-        + " or 'p1 p2 p3 v1 v2 v3 v4"
-        + " or 'p1 p2 p3 v1 v2 v3 v4 ove p4"
-        + " or 'p1 p2 p3 v1 v2 v3 v4 ove p4 p5 v5'",
+        "'p1 p2' or 'p1 p2 p3 v1 v2 v3 v4 ove'"
+        " or 'p1 p2 p3 v1 v2 v3 v4"
+        " or 'p1 p2 p3 v1 v2 v3 v4 ove p4"
+        " or 'p1 p2 p3 v1 v2 v3 v4 ove p4 p5 v5'",
     )
     args = parser.parse_args()
     if len(args.envelope) not in ARROW_ENVELOPE_VALUES:
